@@ -25,7 +25,7 @@ export default function Home() {
               Best Furniture Collection for Your Interior
             </h1>
 
-            <Button option={"Shop Now"} />
+            <Button />
           </div>
 
           {/* Right Section */}
