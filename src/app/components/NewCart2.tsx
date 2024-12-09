@@ -1,6 +1,9 @@
 import React from 'react'
-
-const NewCart2 = ({title, product}) => {
+interface CartsProps {
+  title: string;
+  product: string;
+}
+const NewCart2: React.FC<CartsProps>  = ({title, product}) => {
   return (
     
       

@@ -1,6 +1,10 @@
 import React from 'react'
-
-const Star = ({name, price, image, }) => {
+interface CartsProps {
+  name: string;
+  price: string;
+  image: string;
+}
+const Star: React.FC<CartsProps> = ({name, price, image, }) => {
   return (
     <div>
         <div className="group relative max-w-sm mx-auto">

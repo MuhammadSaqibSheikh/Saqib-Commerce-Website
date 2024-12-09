@@ -1,8 +1,8 @@
-import Footer from "../compoents/Footer";
-import LowerHeader from "../compoents/LowerHeader";
-import NavBar from "../compoents/NavBar";
-import Star from "../compoents/Star";
-import TopHeader from "../compoents/TopHeader";
+import Footer from "../components/Footer";
+import LowerHeader from "../components/LowerHeader";
+import NavBar from "../components/NavBar";
+import Star from "../components/Star";
+import TopHeader from "../components/TopHeader";
 
 export default function Home() {
     return (

@@ -1,12 +1,12 @@
 import Image from "next/image";
-import TopHeader from "./compoents/TopHeader";
-import LowerHeader from "./compoents/LowerHeader";
-import NavBar from "./compoents/NavBar";
-import Button from "./compoents/Button";
-import Carts from "./compoents/Carts";
-import NewCart2 from "./compoents/NewCart2";
-import Footer from "./compoents/Footer";
-import LowFooter from "./compoents/LowFooter";
+import TopHeader from "./components/TopHeader";
+import LowerHeader from "./components/LowerHeader";
+import NavBar from "./components/NavBar";
+import Button from "./components/Button";
+import Carts from "./components/Carts";
+import NewCart2 from "./components/NewCart2";
+import Footer from "./components/Footer";
+import LowFooter from "./components/LowFooter";
 
 
 export default function Home() {
@@ -25,7 +25,7 @@ export default function Home() {
               Best Furniture Collection for Your Interior
             </h1>
 
-            <Button />
+            <Button  />
           </div>
 
           {/* Right Section */}

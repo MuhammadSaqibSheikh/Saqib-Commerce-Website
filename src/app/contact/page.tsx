@@ -1,9 +1,9 @@
 import React from 'react';
 import Image from 'next/image';
-import Footer from '../compoents/Footer';
-import TopHeader from '../compoents/TopHeader';
-import LowerHeader from '../compoents/LowerHeader';
-import NavBar from '../compoents/NavBar';
+import Footer from '../components/Footer';
+import TopHeader from '../components/TopHeader';
+import LowerHeader from '../components/LowerHeader';
+import NavBar from '../components/NavBar';
 
 export default function Contact() {
   return (
