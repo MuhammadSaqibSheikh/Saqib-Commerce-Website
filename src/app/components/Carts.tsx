@@ -37,7 +37,7 @@ const Carts: React.FC<CartsProps> = ({ product, heading }) => {
                 </div>
                 <img
                   className="w-10 h-auto"
-                  src="/img/addcarts.png"
+                  src="/img/addCarts.png"
                   alt="Add to Cart"
                 />
               </div>

@@ -32,7 +32,7 @@ export default function Home() {
           <div className="lg:w-1/2 w-full flex justify-center lg:justify-end">
             <img
               className="max-w-full h-auto lg:w-[80%] "
-              src="/img/product2.png"
+              src="/img/Product2.png"
               alt="Furniture"
             />
           </div>
@@ -45,23 +45,77 @@ export default function Home() {
 <div className="px-4 lg:px-[80px] space-y-20"> 
   {/* Logo Section */}
   <div className="mx-auto w-full max-w-7xl flex justify-between flex-wrap gap-6">
-    {Array(6)
-      .fill(null)
-      .map((_, index) => (
+    
         <img
-        key={index}
+       
         className="w-32 h-auto sm:w-36 md:w-40"
-        src={`/img/logo${index + 2}.png`}
-        alt={`Logo ${index + 2}`}
+        src="/img/Logo2.png"
+        alt="Logo 2"
         />
-      ))}
+      
   </div>
+  
+  <div className="mx-auto w-full max-w-7xl flex justify-between flex-wrap gap-6">
+    
+        <img
+       
+        className="w-32 h-auto sm:w-36 md:w-40"
+        src="/img/Logo2.png"
+        alt="Logo 2"
+        />
+      
+  </div>
+  
+  <div className="mx-auto w-full max-w-7xl flex justify-between flex-wrap gap-6">
+    
+        <img
+       
+        className="w-32 h-auto sm:w-36 md:w-40"
+        src="/img/Logo2.png"
+        alt="Logo 2"
+        />
+      
+  </div>
+  
+  <div className="mx-auto w-full max-w-7xl flex justify-between flex-wrap gap-6">
+    
+        <img
+       
+        className="w-32 h-auto sm:w-36 md:w-40"
+        src="/img/Logo2.png"
+        alt="Logo 2"
+        />
+      
+  </div>
+  
+  <div className="mx-auto w-full max-w-7xl flex justify-between flex-wrap gap-6">
+    
+        <img
+       
+        className="w-32 h-auto sm:w-36 md:w-40"
+        src="/img/Logo2.png"
+        alt="Logo 2"
+        />
+      
+  </div>
+  
+  <div className="mx-auto w-full max-w-7xl flex justify-between flex-wrap gap-6">
+    
+        <img
+       
+        className="w-32 h-auto sm:w-36 md:w-40"
+        src="/img/Logo2.png"
+        alt="Logo 2"
+        />
+      
+  </div>
+  
       </div>
 
  
-  <Carts product={"/img/product2.png"} heading={"Featured Products"}/>
+  <Carts product={"/img/Product2.png"} heading={"Featured Products"}/>
 
-  <NewCart2 product={"/img/product3.png"} title={"top Categories"}/>
+  <NewCart2 product={"/img/Product3.png"} title={"top Categories"}/>
 
    
   {/* gallary section */}
@@ -100,8 +154,8 @@ export default function Home() {
     <h1 className="text-3xl text-center font-bold">Our Products</h1>
   </div>
   <div className="my-16">
-<Carts product={"/img/product2.png"} heading={""}/>
-<Carts product={"/img/product2.png"} heading={""}/>
+<Carts product={"/img/Product2.png"} heading={""}/>
+<Carts product={"/img/Product2.png"} heading={""}/>
 </div>
 
 

@@ -9,7 +9,7 @@ const Footer = () => {
       
       {/* Company Info */}
       <div>
-        <img src="/img/logo.png" alt="" />
+        <img src="/img/Logo.png" alt="" />
         <p className="mt-4 text-sm text-gray-600">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.
         </p>
