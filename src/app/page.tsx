@@ -42,75 +42,47 @@ export default function Home() {
      
 
 
-<div className="px-4 lg:px-[80px] space-y-20"> 
+        <div className="px-4 lg:px-[80px] space-y-8">
   {/* Logo Section */}
-  <div className="mx-auto w-full max-w-7xl flex justify-between flex-wrap gap-6">
-    
-        <img
-       
-        className="w-32 h-auto sm:w-36 md:w-40"
-        src="/img/Logo2.png"
-        alt="Logo 2"
-        />
-      
+  <div className="mx-auto w-full max-w-7xl grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 place-items-center">
+    <img
+      className="w-24 sm:w-32 md:w-36 lg:w-40 h-auto"
+      src="/img/Logo2.png"
+      alt="Logo 2"
+    />
+
+    <img
+      className="w-24 sm:w-32 md:w-36 lg:w-40 h-auto"
+      src="/img/Logo3.png"
+      alt="Logo 3"
+    />
+
+    <img
+      className="w-24 sm:w-32 md:w-36 lg:w-40 h-auto"
+      src="/img/Logo4.png"
+      alt="Logo 4"
+    />
+
+    <img
+      className="w-24 sm:w-32 md:w-36 lg:w-40 h-auto"
+      src="/img/Logo5.png"
+      alt="Logo 5"
+    />
+
+    <img
+      className="w-24 sm:w-32 md:w-36 lg:w-40 h-auto"
+      src="/img/Logo6.png"
+      alt="Logo 6"
+    />
+
+    <img
+      className="w-24 sm:w-32 md:w-36 lg:w-40 h-auto"
+      src="/img/Logo7.png"
+      alt="Logo 7"
+    />
   </div>
-  
-  <div className="mx-auto w-full max-w-7xl flex justify-between flex-wrap gap-6">
-    
-        <img
-       
-        className="w-32 h-auto sm:w-36 md:w-40"
-        src="/img/Logo2.png"
-        alt="Logo 2"
-        />
-      
-  </div>
-  
-  <div className="mx-auto w-full max-w-7xl flex justify-between flex-wrap gap-6">
-    
-        <img
-       
-        className="w-32 h-auto sm:w-36 md:w-40"
-        src="/img/Logo2.png"
-        alt="Logo 2"
-        />
-      
-  </div>
-  
-  <div className="mx-auto w-full max-w-7xl flex justify-between flex-wrap gap-6">
-    
-        <img
-       
-        className="w-32 h-auto sm:w-36 md:w-40"
-        src="/img/Logo2.png"
-        alt="Logo 2"
-        />
-      
-  </div>
-  
-  <div className="mx-auto w-full max-w-7xl flex justify-between flex-wrap gap-6">
-    
-        <img
-       
-        className="w-32 h-auto sm:w-36 md:w-40"
-        src="/img/Logo2.png"
-        alt="Logo 2"
-        />
-      
-  </div>
-  
-  <div className="mx-auto w-full max-w-7xl flex justify-between flex-wrap gap-6">
-    
-        <img
-       
-        className="w-32 h-auto sm:w-36 md:w-40"
-        src="/img/Logo2.png"
-        alt="Logo 2"
-        />
-      
-  </div>
-  
-      </div>
+</div>
+
 
  
   <Carts product={"/img/Product2.png"} heading={"Featured Products"}/>
