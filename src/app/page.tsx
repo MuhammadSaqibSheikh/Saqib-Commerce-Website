@@ -1,21 +1,16 @@
 import Image from "next/image";
-import TopHeader from "./components/TopHeader";
-import LowerHeader from "./components/LowerHeader";
-import NavBar from "./components/NavBar";
+
 import Button from "./components/Button";
 import Carts from "./components/Carts";
 import NewCart2 from "./components/NewCart2";
-import Footer from "./components/Footer";
-import LowFooter from "./components/LowFooter";
+
 
 
 export default function Home() {
   return (
     <>
       <div className="mx-auto">
-        <TopHeader />
-        <LowerHeader />
-        <NavBar />
+       
 
         <div className="container bg-slate-100 flex items-center justify-between max-w-7xl h- mx-auto px-9 pt-36">
           {/* Left Section */}
@@ -131,18 +126,13 @@ export default function Home() {
 </div>
 
 
+
 {/* <div>
   <Star name={"wood"} image={"/img/item2.png"} price={"123$"}/>
 </div> */}
-
-<div className="mt-40">
-  <Footer/>
+</div>
 </div>
 
-</div>
-
-</div>
-<LowFooter/>
     </>
   );
 }

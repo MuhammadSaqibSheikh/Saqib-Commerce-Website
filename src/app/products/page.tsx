@@ -1,16 +1,13 @@
-import Footer from "../components/Footer";
-import LowerHeader from "../components/LowerHeader";
-import NavBar from "../components/NavBar";
+
+
 import Star from "../components/Star";
-import TopHeader from "../components/TopHeader";
+
 
 export default function Home() {
     return (
       <>
         <div className="mx-auto">
-         <TopHeader/>
-         <LowerHeader/>
-         <NavBar/>
+     
 
          <div className="mx-auto max-w-[1321px] my-9 px-4 sm:px-6 lg:px-8">
   <h1 className="text-4xl font-bold mb-8">All Products</h1>
@@ -72,9 +69,7 @@ export default function Home() {
   </section>
 </div>
 
-<div className="mt-40">
-  <Footer/>
-</div>
+
 
 
  

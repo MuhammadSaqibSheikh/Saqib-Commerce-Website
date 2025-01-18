@@ -1,9 +1,6 @@
 import Image from 'next/image';
 import React from 'react';
-import Footer from '../components/Footer';
-import TopHeader from '../components/TopHeader';
-import LowerHeader from '../components/LowerHeader';
-import NavBar from '../components/NavBar';
+
 
 export default function About() {
   const featureImages = [
@@ -15,9 +12,7 @@ export default function About() {
 
   return (
     <>
-    <TopHeader/>
-    <LowerHeader/>
-    <NavBar/>
+  
     
     <section className="text-gray-600 body-font py-12">
       <div className="container px-5 md:px-28 mx-auto flex flex-wrap md:flex-nowrap justify-center md:justify-between">
@@ -106,7 +101,6 @@ export default function About() {
       
     </section>
 
-<Footer/>
 
 </>
   );

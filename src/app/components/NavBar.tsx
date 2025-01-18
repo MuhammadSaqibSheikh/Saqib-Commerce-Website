@@ -16,6 +16,9 @@ const NavBar = () => {
       <li className="hover:text-blue-500 cursor-pointer transition-colors duration-300 ease-in-out"><Link href="/carts">
             Shop
           </Link></li>
+      <li className="hover:text-blue-500 cursor-pointer transition-colors duration-300 ease-in-out"><Link href="/item">
+            Item
+          </Link></li>
       <li className="hover:text-blue-500 cursor-pointer transition-colors duration-300 ease-in-out"><Link href="/products">
             Product
           </Link></li>

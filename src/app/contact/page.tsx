@@ -1,17 +1,11 @@
 import React from 'react';
 import Image from 'next/image';
-import Footer from '../components/Footer';
-import TopHeader from '../components/TopHeader';
-import LowerHeader from '../components/LowerHeader';
-import NavBar from '../components/NavBar';
 
 export default function Contact() {
   return (
 
 <>
-<TopHeader/>
-<LowerHeader/>
-<NavBar/>
+
 
 
     <div className="flex flex-col items-center p-4 md:p-8">
@@ -109,9 +103,7 @@ export default function Contact() {
         </div>
       </div>
 
-      <div>
-        <Footer/>
-      </div>
+      
     </div>
     </>
 
