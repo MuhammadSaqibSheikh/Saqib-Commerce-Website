@@ -1,7 +1,7 @@
 import React from 'react'
 interface CartsProps {
   name: string;
-  price: string;
+  price: number;
   image: string;
 }
 const Star: React.FC<CartsProps> = ({name, price, image, }) => {

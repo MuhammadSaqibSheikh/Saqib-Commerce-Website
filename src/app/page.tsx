@@ -3,10 +3,23 @@ import Image from "next/image";
 import Button from "./components/Button";
 import Carts from "./components/Carts";
 import NewCart2 from "./components/NewCart2";
+import { sanityFatch } from "@/sanity/lib/fatch";
+import { allProducts } from "@/sanity/lib/queries";
+import image from "@sanity/image-url"
 
 
 
-export default function Home() {
+type Products ={
+  _id: string;
+  title: string;
+  image: string;
+  price: number;
+  description: string;
+}
+
+
+export default async function Home() {
+  const products:Products [] = await sanityFatch({query:allProducts})
   return (
     <>
       <div className="mx-auto">

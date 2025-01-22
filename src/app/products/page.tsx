@@ -1,11 +1,26 @@
-
-
+import { allProducts } from "@/sanity/lib/queries";
+import { sanityFatch } from "@/sanity/lib/fatch";
 import Star from "../components/Star";
+import { title } from "process";
+import Link from "next/link";
 
 
-export default function Home() {
-    return (
-      <>
+type Products = {
+  _id: string;
+  title: string;
+  price: number;
+  description: string;
+  image: string;
+};
+
+export default async function Home() {
+  const products: Products[] = await sanityFatch({query:allProducts });
+  console.log(products);
+  
+  
+  return (
+  
+     <>
         <div className="mx-auto">
      
 
@@ -13,18 +28,36 @@ export default function Home() {
   <h1 className="text-4xl font-bold mb-8">All Products</h1>
 
   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-    <Star name={"Wood"} image={"/img/item2.png"} price={"123$"} />
-    <Star name={"Wood"} image={"/img/item3.png"} price={"123$"} />
-    <Star name={"Wood"} image={"/img/item4.png"} price={"123$"} />
-    <Star name={"Wood"} image={"/img/item5.png"} price={"123$"} />
-    <Star name={"Wood"} image={"/img/item2.png"} price={"123$"} />
-    <Star name={"Wood"} image={"/img/item3.png"} price={"123$"} />
-    <Star name={"Wood"} image={"/img/item4.png"} price={"123$"} />
-    <Star name={"Wood"} image={"/img/item5.png"} price={"123$"} />
-    <Star name={"Wood"} image={"/img/item2.png"} price={"123$"} />
-    <Star name={"Wood"} image={"/img/item3.png"} price={"123$"} />
-    <Star name={"Wood"} image={"/img/item4.png"} price={"123$"} />
-    <Star name={"Wood"} image={"/img/item5.png"} price={"123$"} />
+  {products.map((product) => (
+  <div key={product._id}>
+        <div className="group relative max-w-sm mx-auto">
+  {/* Product Image */}
+  <div className="aspect-square w-full overflow-hidden rounded-lg bg-gray-100">
+    <img
+      src={product.image}
+      alt={product.title}
+      className="h-full w-full object-cover object-center transition-transform duration-300 group-hover:scale-110"
+    />
+    <div className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 transition-opacity group-hover:opacity-100">
+    <Link href={`/productDetail/${product._id}`}>
+      <button className="px-4 py-2 text-white bg-blue-600 rounded-md hover:bg-blue-500">
+        Add to Cart
+      </button>
+      </Link>
+   
+    </div>
+  </div>
+
+  {/* Product Details */}
+  <div className="mt-4 text-center">
+    <h3 className="text-lg font-semibold text-gray-900">{product.title}</h3>
+    <p className="mt-1 text-sm font-medium text-gray-600">${product.price}</p>
+  </div>
+</div>
+
+      
+    </div>
+))}
   </div>
 </div>
 
@@ -76,6 +109,9 @@ export default function Home() {
   
   
   </div>
-      </>
-    );
-  }
+      
+
+</>
+
+  )}
+ 
