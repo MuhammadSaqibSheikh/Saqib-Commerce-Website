@@ -5,12 +5,13 @@ import { title } from "process";
 import Link from "next/link";
 
 
-type Products = {
+export type Products = {
   _id: string;
   title: string;
   price: number;
   description: string;
   image: string;
+  inventory:number
 };
 
 export default async function Home() {
@@ -41,7 +42,7 @@ export default async function Home() {
     <div className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 transition-opacity group-hover:opacity-100">
     <Link href={`/productDetail/${product._id}`}>
       <button className="px-4 py-2 text-white bg-blue-600 rounded-md hover:bg-blue-500">
-        Add to Cart
+        View Detail
       </button>
       </Link>
    

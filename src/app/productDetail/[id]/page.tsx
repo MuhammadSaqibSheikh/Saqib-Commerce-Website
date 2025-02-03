@@ -1,35 +1,33 @@
-
+"use client"
 
 import Carts from "@/app/components/Carts";
 import NewCart2 from "@/app/components/NewCart2";
 import Star from "@/app/components/Star";
-import { useAddToCart } from "@/app/funcation/script";
+import {  addToCart, removeFromCart,  } from "./../../actions/actions";
 import { sanityFatch } from "@/sanity/lib/fatch"; // Your fetch function
 import { useRouter } from "next/router";
+import { Products } from "@/app/products/page";
+import Swal from "sweetalert2";
 
 
 
 
-type Product = {
-  _id: string;
-  title: string;
-  price: number;
-  description: string;
-  image: string;
-};
+
 
 // Fetch product data based on dynamic route
-async function getProduct(id: string): Promise<Product | null> {
+async function getProduct(id: string): Promise<Products | null> {
   const productQuery = `
     *[_type == "products" && _id == $id][0]{
       _id,
       title,
       description,
       "image": image.asset->url,
-      price
+      price,
+      inventory
+      
     }
   `;
-  const product: Product = await sanityFatch({ query: productQuery, params: { id } });
+  const product: Products = await sanityFatch({ query: productQuery, params: { id } });
   return product || null;
 }
 
@@ -39,7 +37,21 @@ export default async function ProductPage({ params }: { params: { id: string } }
 
   if (!product) {
     return <div className="text-center text-lg mt-20">Product not found</div>;
-  }
+  };
+  const handleAddToCart =(e: React.MouseEvent, product: Products) =>{
+    e.preventDefault()
+    Swal.fire({
+      position: "top-right",
+      icon: "success",
+      title:`${product.title} added to cart`,
+      showConfirmButton: false,
+      timer: 1200,
+    })
+    addToCart(product)
+    
+    
+    
+  };
 
   return (
 
@@ -59,7 +71,7 @@ export default async function ProductPage({ params }: { params: { id: string } }
           <h1 className="text-4xl font-bold mb-4">{product.title}</h1>
           <p className="text-xl text-gray-700 mb-4">${product.price}</p>
           <p className="text-gray-600 leading-relaxed">{product.description}</p>
-          <button className="mt-6 px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-500" >
+          <button className="mt-6 px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-500" onClick={(e) => handleAddToCart(e, product)}>
             Add to Cart
           </button>
         </div>
@@ -78,15 +90,3 @@ export default async function ProductPage({ params }: { params: { id: string } }
   );
 }
 
-// Generate Static Params for Dynamic Routes
-export async function generateStaticParams() {
-  const allProductsQuery = `
-    *[_type == "products"]{
-      _id
-    }
-  `;
-  const products = await sanityFatch({ query: allProductsQuery });
-  return products.map((product: Product) => ({
-    id: product._id,
-  }));
-}

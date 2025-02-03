@@ -8,7 +8,8 @@ export const allProducts = defineQuery(`
     title,
     description,
     "image": image.asset->url,
-    price
+    price,
+    inventory
     
 }
     
@@ -21,7 +22,8 @@ export const allProducts = defineQuery(`
     title,
     description,
     "image": image.asset->url,
-    price
+    price,
+    inventory
     
 }
 `)

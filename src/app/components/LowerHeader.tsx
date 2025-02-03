@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from 'next/link'
 
 const LowerHeader = () => {
   return (
@@ -12,8 +13,12 @@ const LowerHeader = () => {
   
   <div className="w-32 h-11 bg-slate-200 flex justify-between items-center px-4 rounded-sm">
     <img src="/img/buy1.png" alt="Cart Icon" className="w-6 h-6" />
-    <button className="text-sm font-medium">Cart</button>
-    <img src="/img/No.png" alt="Notification Icon" className="w-6 h-6" />
+   
+    <button className="text-sm font-medium"><Link href="/carts">
+            cart
+          </Link></button>
+    
+    <div className="w-6 h-6 bg-slate-800 text-white text-center rounded-full">2</div>
   </div>
 </div>
     </div>
