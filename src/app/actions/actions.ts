@@ -11,13 +11,22 @@ export const addToCart = (product: Products) => {
     cart.push({ ...product, inventory: 1 });
   }
 
+  // Update localStorage
   localStorage.setItem("cart", JSON.stringify(cart));
+
+  // Dispatch storage event to notify the update
+  window.dispatchEvent(new Event("storage"));
 };
 
 export const removeFromCart = (productId: string) => {
   let cart: Products[] = JSON.parse(localStorage.getItem("cart") || "[]");
   cart = cart.filter(item => item._id !== productId);
+
+  // Update localStorage
   localStorage.setItem("cart", JSON.stringify(cart));
+
+  // Dispatch storage event to notify the update
+  window.dispatchEvent(new Event("storage"));
 };
 
 export const updateCartQuantity = (productId: string, quantity: number) => {
@@ -33,3 +42,4 @@ export const updateCartQuantity = (productId: string, quantity: number) => {
 export const getCartItem = (): Products[] => {
   return JSON.parse(localStorage.getItem("cart") || "[]");
 };
+
