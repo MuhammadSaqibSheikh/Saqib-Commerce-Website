@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { getCartItem, removeFromCart, updateCartQuantity } from "../actions/actions";
 import Swal from "sweetalert2";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
   const [cartItems, setCartItems] = useState<any[]>([]);
@@ -57,7 +58,7 @@ export default function Home() {
   const calculatedTotal = () => {
     return cartItems.reduce((total, item) => total + item.price * item.inventory, 0);
   };
-
+ const router = useRouter();
   const handleProceed = () => {
     Swal.fire({
       title: "Proceed to checkout?",
@@ -70,6 +71,7 @@ export default function Home() {
     }).then((result) => {
       if (result.isConfirmed) {
         Swal.fire("Success", "Your order has been successfully processed", "success");
+        router.push("/checkout")
         setCartItems([]);
       }
     });
