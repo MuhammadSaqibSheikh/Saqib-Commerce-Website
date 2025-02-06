@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { getCartItem } from "../actions/actions";
 import { Products } from "../products/page";
 import Swal from "sweetalert2";
+import { client } from "@/sanity/lib/client";
 
 const Checkout = () => {
   const [cartItems, setCartItem] = useState<Products[]>([]);
@@ -62,19 +63,57 @@ const Checkout = () => {
     return Object.values(errors).every((error) => !error);
   };
 
-  const handlePlaceOrder = () => {
-    if (validateForm()) {
-      Swal.fire({
-        title: "Order Placed!",
-        text: "Your order has been placed successfully.",
-        icon: "success",
-        confirmButtonText: "Return to Home" ,
-      });
-      localStorage.removeItem("appliedDiscount");
-    } else {
-      alert("Please fill in all required fields.");
+  const handlePlaceOrder = async () => {
+
+  if (validateForm()) {
+    Swal.fire({
+      title: "Order Placed!",
+      text: "Your order has been placed successfully.",
+      icon: "success",
+      confirmButtonText: "Return to Home" ,
+    });
+    localStorage.removeItem("appliedDiscount");
+  } else {
+    alert("Please fill in all required fields.");
+  }
+
+    const orderData = {
+      _type: "order",
+      firstName: formValues.firstName,
+      lastName: formValues.lastName,
+      phone: formValues.phone,
+      email: formValues.email,
+      address: formValues.address,
+      city: formValues.city,
+      zipCode: formValues.zipCode,
+      items: cartItems.map((item) => ({
+      _type:"reference",
+      _ref: item._id,
+      })),
+      total: total,
+      discount:discount,
+      orderData: new Date().toISOString(),
+    };
+    try{
+      await client.create(orderData)
+      localStorage.removeItem("appliedDiscount")
+    } catch(error){
+      console.error("error cerating order",error)
     }
+    
   };
+
+  // if (validateForm()) {
+  //   Swal.fire({
+  //     title: "Order Placed!",
+  //     text: "Your order has been placed successfully.",
+  //     icon: "success",
+  //     confirmButtonText: "Return to Home" ,
+  //   });
+  //   localStorage.removeItem("appliedDiscount");
+  // } else {
+  //   alert("Please fill in all required fields.");
+  // }
 
   return (
     <div className="max-w-4xl mx-auto p-4">

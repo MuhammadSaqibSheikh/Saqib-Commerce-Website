@@ -27,3 +27,33 @@ export const allProducts = defineQuery(`
     
 }
 `)
+
+export const Category = defineQuery(`
+  *[_type =="products"]{
+  _id,
+    title,
+    description,
+    "image": image.asset->url,
+    price,
+    inventory
+    
+}
+    
+ `)
+
+ export const OrderData = defineQuery(`
+  *[_type =="products"]{
+  _id,
+    firstName,
+      lastName,
+      phone,
+      email,
+      address,
+      city,
+      zipCode
+    
+}
+    
+ `)
+
+ 
