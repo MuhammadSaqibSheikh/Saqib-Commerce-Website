@@ -73,6 +73,7 @@ export default function Home() {
         Swal.fire("Success", "Your order has been successfully processed", "success");
         router.push("/checkout")
         setCartItems([]);
+        
       }
     });
   };

@@ -12,7 +12,7 @@ const Checkout = () => {
   const [formValues, setFormValue] = useState({
     firstName: "",
     lastName: "",
-    phone: "",
+    phoneNumber: "",
     email: "",
     address: "",
     city: "",
@@ -21,7 +21,7 @@ const Checkout = () => {
   const [formErrors, setFormErrors] = useState({
     firstName: false,
     lastName: false,
-    phone: false,
+    phoneNumber: false,
     email: false,
     address: false,
     city: false,
@@ -53,7 +53,7 @@ const Checkout = () => {
     const errors = {
       firstName: !formValues.firstName,
       lastName: !formValues.lastName,
-      phone: !formValues.phone,
+      phoneNumber: !formValues.phoneNumber,
       email: !formValues.email,
       address: !formValues.address,
       city: !formValues.city,
@@ -63,45 +63,70 @@ const Checkout = () => {
     return Object.values(errors).every((error) => !error);
   };
 
-  const handlePlaceOrder = async () => {
-
+ const handlePlaceOrder = async () => {
   if (validateForm()) {
     Swal.fire({
       title: "Order Placed!",
       text: "Your order has been placed successfully.",
       icon: "success",
-      confirmButtonText: "Return to Home" ,
+      confirmButtonText: "Return to Home",
     });
-    localStorage.removeItem("appliedDiscount");
   } else {
-    alert("Please fill in all required fields.");
+    Swal.fire({
+      title: "Form Incomplete",
+      text: "Please fill in all required fields.",
+      icon: "error",
+      confirmButtonText: "OK",
+    });
+    return; // Stop execution if validation fails
   }
 
-    const orderData = {
-      _type: "order",
-      firstName: formValues.firstName,
-      lastName: formValues.lastName,
-      phone: formValues.phone,
-      email: formValues.email,
-      address: formValues.address,
-      city: formValues.city,
-      zipCode: formValues.zipCode,
-      items: cartItems.map((item) => ({
-      _type:"reference",
+  const orderData = {
+    _type: "order",
+    firstName: formValues.firstName,
+    lastName: formValues.lastName,
+    phoneNumber: formValues.phoneNumber,
+    email: formValues.email,
+    address: formValues.address,
+    city: formValues.city,
+    zipCode: formValues.zipCode,
+    cartItems: cartItems.map((item) => ({
+      _type: "reference",
       _ref: item._id,
-      })),
-      total: total,
-      discount:discount,
-      orderData: new Date().toISOString(),
-    };
-    try{
-      await client.create(orderData)
-      localStorage.removeItem("appliedDiscount")
-    } catch(error){
-      console.error("error cerating order",error)
-    }
-    
+    })),
+    total: total,
+    status: "pending",
+    discount: discount,
+    orderDate: new Date().toISOString(), // Corrected to call the method
   };
+
+  try {
+    await client.create(orderData); // Save order to Sanity
+    // Remove cart from localStorage
+    localStorage.removeItem("appliedDiscount"); // Remove discount as well
+
+    Swal.fire({
+      title: "Order Placed!",
+      text: "Your order has been placed successfully.",
+      icon: "success",
+      confirmButtonText: "OK",
+    }).then(() => {
+      // Optionally redirect after order is placed
+      window.location.href = "/";
+    });
+  } catch (error) {
+    console.error("Error creating order:", error);
+    Swal.fire({
+      title: "Order Failed",
+      text: "There was an issue placing your order. Please try again.",
+      icon: "error",
+      confirmButtonText: "OK",
+    });
+  }
+};
+
+  
+  
 
   // if (validateForm()) {
   //   Swal.fire({
@@ -188,14 +213,15 @@ const Checkout = () => {
             </label>
             <input
               type="text"
-              id="phone"
-              value={formValues.phone}
+              id="phoneNumber"
+              placeholder="Enter phone number"
+              value={formValues.phoneNumber}
               onChange={handleInputChange}
               className={`w-full p-2 border rounded ${
-                formErrors.phone ? "border-red-500" : "border-gray-300"
+                formErrors.phoneNumber ? "border-red-500" : "border-gray-300"
               }`}
             />
-            {formErrors.phone && (
+            {formErrors.phoneNumber && (
               <p className="text-red-500 text-sm">Phone number is required.</p>
             )}
           </div>

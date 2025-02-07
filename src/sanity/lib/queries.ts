@@ -29,21 +29,18 @@ export const allProducts = defineQuery(`
 `)
 
 export const Category = defineQuery(`
-  *[_type =="products"]{
-  _id,
-    title,
-    description,
-    "image": image.asset->url,
-    price,
-    inventory
+  *[_type =="categories"]{
+  title,
+  image,
+  products[]
     
 }
     
  `)
 
  export const OrderData = defineQuery(`
-  *[_type =="products"]{
-  _id,
+  *[_type =="order"]{
+
     firstName,
       lastName,
       phone,

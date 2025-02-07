@@ -14,6 +14,8 @@ export type Products = {
   inventory:number
 };
 
+
+
 export default async function Home() {
   const products: Products[] = await sanityFatch({query:allProducts });
   console.log(products);

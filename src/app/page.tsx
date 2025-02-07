@@ -18,8 +18,10 @@ type Products ={
 }
 
 
+
+
 export default async function Home() {
-  const products:Products [] = await sanityFatch({query:allProducts})
+  const products:Products [] = await sanityFatch({query:allProducts});
   return (
     <>
       <div className="mx-auto">
