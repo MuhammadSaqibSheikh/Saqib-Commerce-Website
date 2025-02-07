@@ -1,3 +1,8 @@
+"use client"
+
+
+
+
 import { allProducts } from "@/sanity/lib/queries";
 import { sanityFatch } from "@/sanity/lib/fatch";
 import Star from "../components/Star";

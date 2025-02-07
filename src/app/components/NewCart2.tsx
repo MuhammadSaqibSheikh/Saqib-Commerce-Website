@@ -4,6 +4,7 @@ interface CartsProps {
   product: string;
 }
 const NewCart2: React.FC<CartsProps>  = ({title, product}) => {
+  
   return (
     
       

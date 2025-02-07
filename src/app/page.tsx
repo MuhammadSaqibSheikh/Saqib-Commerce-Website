@@ -2,10 +2,12 @@ import Image from "next/image";
 
 import Button from "./components/Button";
 import Carts from "./components/Carts";
-import NewCart2 from "./components/NewCart2";
+
 import { sanityFatch } from "@/sanity/lib/fatch";
-import { allProducts } from "@/sanity/lib/queries";
-import image from "@sanity/image-url"
+import { allProducts, Categories,} from "@/sanity/lib/queries";
+import image from "@sanity/image-url";
+import Link from "next/link";
+
 
 
 
@@ -17,11 +19,16 @@ type Products ={
   description: string;
 }
 
-
+ export type Category = {
+    title:string,
+    image:string,
+    product:number;
+  };
 
 
 export default async function Home() {
   const products:Products [] = await sanityFatch({query:allProducts});
+  const Categories2: Category[] = await sanityFatch({query: Categories});
   return (
     <>
       <div className="mx-auto">
@@ -97,7 +104,31 @@ export default async function Home() {
  
   <Carts product={"/img/Product2.png"} heading={"Featured Products"}/>
 
-  <NewCart2 product={"/img/Product3.png"} title={"top Categories"}/>
+  <div className="mx-auto max-w-[1321px] px-4 lg:px-[80px] my-9">
+  <h1 className="text-4xl font-bold mb-8">Top Categories</h1>
+
+  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+    {Categories2.map((cart) => (
+      <Link  href={`/products`}>
+        <div
+          className="relative w-full max-w-[424px] h-[424px] mx-auto overflow-hidden rounded-lg shadow-lg hover:scale-105 hover:shadow-xl transition-transform duration-300 ease-in-out"
+        >
+          <img
+            className="w-full h-full object-cover"
+            src={cart.image}
+            alt={cart.title}
+          />
+
+          <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-60 p-4">
+            <h1 className="text-xl font-bold text-white">{cart.title}</h1>
+            <p className="text-white">{cart.product}</p>
+          </div>
+        </div>
+      </Link>
+    ))}
+  </div>
+</div>
+  
 
    
   {/* gallary section */}

@@ -28,10 +28,10 @@ export const allProducts = defineQuery(`
 }
 `)
 
-export const Category = defineQuery(`
+export const Categories = defineQuery(`
   *[_type =="categories"]{
   title,
-  image,
+  "image": image.asset->url,
   products[]
     
 }
